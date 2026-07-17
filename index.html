@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>لیان گستر | نمایندگی انحصاری برندهای لوکس ساختمان</title>
+    <meta name="description" content="نماینده انحصاری برندهای کاویان، مروارید، شوان و درسا در ایران. مشاوره، فروش و اجرای لوازم و تزئینات ساختمان.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #0a1628;
+            --navy: #0f1f3a;
+            --navy-light: #162a48;
+            --white: #ffffff;
+            --off-white: #f4f7fc;
+            --gold: #c8a259;
+            --gold2: #dfc07a;
+            --gold3: #a8893a;
+            --gold-glow: rgba(200, 162, 89, 0.35);
+            --text-dark: #1a2332;
+            --text-muted: #5a6b7f;
+            --text-light: #e6ecf5;
+            --border: rgba(200, 162, 89, 0.25);
+            --radius-sm: 12px;
+            --radius: 20px;
+            --radius-lg: 28px;
+            --radius-xl: 36px;
+            --shadow-gold: 0 20px 50px -15px rgba(200, 162, 89, 0.35);
+            --transition: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            background: var(--deep-blue);
+        }
+        body {
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            background: var(--deep-blue);
+            color: var(--text-light);
+            line-height: 1.75;
+            direction: rtl;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1260px; margin: 0 auto; padding: 0 28px; }
+
+        /* RIGHT TOOLBAR */
+        .right-toolbar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 14px 0;
+            background: rgba(10, 22, 40, 0.8);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 36px;
+            border: 1px solid var(--border);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+            width: 48px;
+            min-height: 240px;
+        }
+        .right-toolbar::after {
+            content: '';
+            position: absolute;
+            top: 20px; bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--gold3), var(--gold), var(--gold3), transparent);
+            opacity: 0.6;
+        }
+        .toolbar-item {
+            position: relative;
+            width: 100%; height: 42px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 2;
+        }
+        .toolbar-dot {
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transition: var(--transition);
+        }
+        .toolbar-item.active .toolbar-dot,
+        .toolbar-item:hover .toolbar-dot {
+            background: var(--gold);
+            box-shadow: 0 0 18px var(--gold-glow);
+            transform: scale(1.6);
+        }
+        .toolbar-label {
+            position: absolute;
+            right: 36px;
+            background: var(--navy);
+            color: var(--gold2);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 0.78rem; font-weight: 700;
+            white-space: nowrap;
+            opacity: 0; transform: translateX(12px);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            pointer-events: none;
+        }
+        .toolbar-item:hover .toolbar-label,
+        .toolbar-item.active .toolbar-label {
+            opacity: 1; transform: translateX(0);
+        }
+
+        /* ============ HERO SECTION (اصلاح شده) ============ */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 50%, #0f1f3a 0%, var(--deep-blue) 70%);
+            padding: 40px 60px;
+        }
+        .hero-bg-art {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-bg-art .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: orbDrift 12s ease-in-out infinite;
+        }
+        .hero-bg-art .orb1 {
+            width: 550px; height: 550px;
+            background: radial-gradient(circle, rgba(200,162,89,0.15) 0%, transparent 70%);
+            top: -15%; left: -10%;
+        }
+        .hero-bg-art .orb2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+            bottom: -10%; right: -5%;
+            animation-delay: 5s;
+        }
+        @keyframes orbDrift {
+            0%,100%{ transform: translate(0,0) scale(1); }
+            33%{ transform: translate(25px,-20px) scale(1.08); }
+            66%{ transform: translate(-20px,15px) scale(0.92); }
+        }
+
+        .hero-visual {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-logo-frame {
+            position: relative;
+            width: min(920px, 38vw);
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-logo-frame .ring1 {
+            position: absolute; inset: 0;
+            border-radius: 50%;
+            border: 1.5px solid rgba(200,162,89,0.3);
+            animation: spinSlow 28s linear infinite;
+        }
+        .hero-logo-frame .ring2 {
+            position: absolute; inset: 10%;
+            border-radius: 50%;
+            border: 1px dashed rgba(255,255,255,0.15);
+            animation: spinSlow 22s linear infinite reverse;
+        }
+        .hero-logo-frame .ring3 {
+            position: absolute; inset: 22%;
+            border-radius: 50%;
+            border: 1px solid rgba(200,162,89,0.15);
+            animation: spinSlow 32s linear infinite;
+        }
+        @keyframes spinSlow { to { transform: rotate(360deg); } }
+        .hero-logo-frame img {
+            position: relative; z-index: 2;
+            width: 85%; height: 85%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 45px rgba(0,0,0,0.4));
+            animation: logoFloat 5s ease-in-out infinite;
+        }
+        @keyframes logoFloat {
+            0%,100%{ transform: translateY(0); }
+            50%{ transform: translateY(-8px); }
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            padding-right: 20px;
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--gold);
+            display: inline-block;
+        }
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 4.5vw, 4rem);
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-text h1 .gold-text {
+            background: linear-gradient(135deg, #e2c27a, #c8a259);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.9;
+            margin-bottom: 32px;
+            max-width: 480px;
+            font-weight: 300;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #0a1628;
+            padding: 15px 34px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px -8px rgba(200,162,89,0.4);
+        }
+        .btn-gold:hover {
+            background: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px -8px rgba(200,162,89,0.6);
+        }
+        .btn-ghost {
+            background: transparent;
+            border: 1.5px solid var(--border);
+            color: var(--gold);
+            padding: 15px 34px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-ghost:hover {
+            background: rgba(200,162,89,0.1);
+            border-color: var(--gold);
+        }
+
+        /* ============ RESPONSIVE HERO ============ */
+        @media (max-width: 992px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                padding: 80px 28px 60px;
+                text-align: center;
+            }
+            .hero-visual {
+                order: -1;
+                margin-bottom: 30px;
+            }
+            .hero-logo-frame {
+                width: min(280px, 60vw);
+            }
+            .hero-text {
+                padding-right: 0;
+            }
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+
+        /* ============ ABOUT (سفید) ============ */
+        .about-section {
+            position: relative; padding: 120px 0;
+            background: var(--white); color: var(--text-dark);
+            overflow: hidden;
+        }
+        .about-section::before {
+            content: ''; position: absolute; top: 0; left:0; right:0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .about-grid {
+            display: grid; grid-template-columns: 1.1fr 0.9fr;
+            gap: 70px; align-items: center; position: relative; z-index:1;
+        }
+        .about-visual {
+            border-radius: var(--radius-xl); overflow: hidden;
+            box-shadow: 0 30px 50px -20px rgba(0,0,0,0.15);
+        }
+        .about-visual img { width:100%; height:480px; object-fit:cover; transition:0.8s; }
+        .about-visual:hover img { transform:scale(1.04); }
+        .accent-tag {
+            position: absolute; bottom:24px; right:24px;
+            background: rgba(10,22,40,0.8); backdrop-filter: blur(8px);
+            padding:8px 20px; border-radius:30px;
+            color: var(--gold); font-weight:700; font-size:0.85rem;
+            border:1px solid var(--border);
+        }
+        .about-text h2 {
+            font-size:2.6rem; font-weight:900; color: var(--text-dark);
+            margin-bottom:18px;
+        }
+        .about-text h2 span { color: var(--gold); }
+        .about-text .lead {
+            font-size:1.15rem; color: #3a4b61; margin-bottom:18px; font-weight:500;
+        }
+        .about-text p { color: #4a5b72; line-height:1.9; margin-bottom:14px; }
+        .about-stats { display:flex; gap:30px; margin-top:28px; }
+        .stat-number { font-size:2.5rem; font-weight:900; color: var(--navy); }
+        .stat-label { font-size:0.85rem; color: #6b7d95; margin-top:6px; }
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns:1fr; }
+        }
+
+        /* ============ SERVICES (آبی تیره) ============ */
+        .services-section {
+            position: relative; padding:120px 0;
+            background: var(--deep-blue);
+        }
+        .section-header { text-align:center; margin-bottom:60px; position:relative; z-index:1; }
+        .section-tag {
+            display:inline-block; font-size:0.8rem; font-weight:700;
+            color: var(--gold); letter-spacing:3px; margin-bottom:12px;
+        }
+        .section-title {
+            font-size:clamp(2.2rem, 4vw, 3rem); font-weight:900;
+            color: #ffffff; line-height:1.2;
+        }
+        .section-title .gold { color: var(--gold); }
+        .section-sub { color: rgba(255,255,255,0.6); font-size:1.05rem; margin-top:10px; }
+
+        .services-showcase {
+            display:grid; grid-template-columns: repeat(4,1fr); gap:20px;
+            position:relative; z-index:1;
+        }
+        .service-card-new {
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius-lg);
+            padding:36px 22px 28px; text-align:center;
+            border:1px solid rgba(255,255,255,0.06);
+            transition: var(--transition); position:relative; overflow:hidden;
+        }
+        .service-card-new::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity:0; transition: var(--transition);
+        }
+        .service-card-new:hover {
+            border-color: var(--border); transform: translateY(-10px);
+            box-shadow: 0 25px 45px -15px rgba(0,0,0,0.5);
+            background: rgba(255,255,255,0.07);
+        }
+        .service-card-new:hover::before { opacity:1; }
+        .service-icon-circle {
+            width:70px; height:70px; border-radius:50%;
+            background: rgba(200,162,89,0.12);
+            display:flex; align-items:center; justify-content:center;
+            margin:0 auto 18px; font-size:1.8rem; color: var(--gold);
+            transition: var(--transition);
+        }
+        .service-card-new:hover .service-icon-circle {
+            background: var(--gold); color: #0a1628;
+            box-shadow:0 0 30px var(--gold-glow);
+        }
+        .service-card-new h3 { font-weight:800; font-size:1.1rem; color:#fff; margin-bottom:6px; }
+        .service-card-new p { font-size:0.85rem; color: rgba(255,255,255,0.55); }
+        @media (max-width: 768px) {
+            .services-showcase { grid-template-columns: repeat(2,1fr); }
+        }
+        @media (max-width: 480px) {
+            .services-showcase { grid-template-columns:1fr; }
+        }
+
+        /* ============ BRANDS (سفید) ============ */
+        .brands-section {
+            padding:120px 0; background: var(--off-white);
+            color: var(--text-dark); position:relative;
+        }
+        .brands-section .section-title { color: var(--text-dark); }
+        .brands-section .section-sub { color: #5a6b7f; }
+        .brands-grid-new {
+            display:grid; grid-template-columns: repeat(4,1fr); gap:24px;
+            position:relative; z-index:1;
+        }
+        .brand-card-new {
+            background: #ffffff; border-radius: var(--radius-lg);
+            padding:28px 18px 22px; text-align:center;
+            cursor:pointer; transition: var(--transition);
+            border:1px solid #e2e8f0; position:relative;
+            box-shadow: 0 10px 25px -10px rgba(0,0,0,0.05);
+        }
+        .brand-card-new:hover {
+            border-color: var(--gold); background: #fdfaf5;
+            transform: translateY(-6px);
+            box-shadow: 0 25px 45px -15px rgba(0,0,0,0.12);
+        }
+        .brand-card-new.active-brand {
+            border-color: var(--gold); background: #fef9ef;
+            box-shadow: 0 0 0 4px rgba(200,162,89,0.1);
+        }
+        .brand-img-wrap {
+            width:110px; height:110px; margin:0 auto 16px;
+            background: #f8fafc; border-radius:22px; padding:14px;
+            display:flex; align-items:center; justify-content:center;
+            transition: var(--transition);
+        }
+        .brand-card-new:hover .brand-img-wrap { background: rgba(200,162,89,0.05); }
+        .brand-img-wrap img { width:100%; height:100%; object-fit:contain; transition:0.3s; }
+        .brand-card-new:hover .brand-img-wrap img { transform:scale(1.06); }
+        .brand-card-new h3 { font-weight:800; color: #1a2332; font-size:1.1rem; }
+        .brand-card-new .hint { font-size:0.75rem; color: #7b8ba0; margin-top:4px; }
+
+        .brand-detail-panel {
+            display:none; margin-top:40px;
+            background: #ffffff; border-radius: var(--radius-xl);
+            padding:40px; border:1px solid #e2e8f0;
+            position:relative; z-index:1; animation: fadeUp 0.5s ease;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
+        }
+        .brand-detail-panel.active { display:block; }
+        @keyframes fadeUp { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+        .brand-detail-panel .close-btn {
+            position:absolute; top:16px; left:20px;
+            background:none; border:none; color:#8892a0; font-size:2rem;
+            cursor:pointer; transition:0.3s;
+        }
+        .brand-detail-panel .close-btn:hover { color: var(--gold); transform:rotate(90deg); }
+        .brand-detail-panel h3 { font-size:1.8rem; color: var(--navy); margin-bottom:12px; }
+        .brand-detail-panel p, .brand-detail-panel li { color: #4a5b72; line-height:1.9; }
+        @media (max-width: 768px) {
+            .brands-grid-new { grid-template-columns: repeat(2,1fr); }
+        }
+        @media (max-width: 480px) {
+            .brands-grid-new { grid-template-columns:1fr; }
+        }
+
+        /* ============ GALLERY ============ */
+        .gallery-section { padding:120px 0; background: var(--deep-blue); }
+        .gallery-masonry {
+            display:grid; grid-template-columns: repeat(4,1fr);
+            grid-auto-rows:220px; gap:16px; position:relative; z-index:1;
+        }
+        .gallery-masonry .item {
+            border-radius: var(--radius); overflow:hidden; cursor:pointer;
+            transition: var(--transition); position:relative;
+        }
+        .gallery-masonry .item.tall { grid-row: span 2; }
+        .gallery-masonry .item.wide { grid-column: span 2; }
+        .gallery-masonry .item img { width:100%; height:100%; object-fit:cover; transition:0.7s; }
+        .gallery-masonry .item:hover img { transform:scale(1.06); }
+        .gallery-masonry .item .overlay {
+            position:absolute; inset:0;
+            background: linear-gradient(180deg, transparent 50%, rgba(10,22,40,0.8));
+            opacity:0; transition:0.4s;
+            display:flex; align-items:flex-end; padding:20px;
+            color: #fff; font-weight:700;
+        }
+        .gallery-masonry .item:hover .overlay { opacity:1; }
+        @media (max-width: 768px) {
+            .gallery-masonry { grid-template-columns: repeat(2,1fr); }
+            .gallery-masonry .item.wide { grid-column: span 1; }
+            .gallery-masonry .item.tall { grid-row: span 1; }
+        }
+
+        /* ============ TESTIMONIALS (سفید) ============ */
+        .testimonials-section { padding:120px 0; background: var(--off-white); }
+        .testimonials-section .section-title { color: var(--text-dark); }
+        .testimonials-carousel {
+            display:grid; grid-template-columns: repeat(3,1fr); gap:28px; z-index:1;
+        }
+        .testimonial-card-new {
+            background: #ffffff; padding:32px 28px; border-radius: var(--radius-lg);
+            border:1px solid #e9edf2; transition: var(--transition);
+            box-shadow: 0 12px 30px -12px rgba(0,0,0,0.04);
+            position: relative;
+        }
+        .testimonial-card-new::before {
+            content:'"'; position:absolute; top:10px; right:20px;
+            font-size:5rem; color: rgba(200,162,89,0.12); font-weight:900;
+            line-height:1; pointer-events:none;
+        }
+        .testimonial-card-new:hover {
+            border-color: var(--gold); transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+        }
+        .testimonial-card-new .stars { color: var(--gold); margin-bottom:12px; }
+        .testimonial-card-new p { color: #3e4d60; font-style:italic; line-height:1.8; margin-bottom:14px; }
+        .testimonial-card-new .author { font-weight:700; color: #1a2332; }
+        @media (max-width: 768px) {
+            .testimonials-carousel { grid-template-columns: repeat(2,1fr); }
+        }
+        @media (max-width: 480px) {
+            .testimonials-carousel { grid-template-columns:1fr; }
+        }
+
+        /* ============ CONTACT (آبی تیره) ============ */
+        .contact-section { padding:120px 0 80px; background: var(--deep-blue); }
+        .contact-grid-new {
+            display:grid; grid-template-columns: 1fr 1.2fr 1fr; gap:40px;
+            position:relative; z-index:1;
+        }
+        .contact-info-new h3 { color: var(--gold); font-size:1.3rem; margin-bottom:16px; }
+        .contact-info-new p { color: rgba(255,255,255,0.7); margin-bottom:10px; display:flex; align-items:center; gap:10px; }
+        .contact-info-new i { color: var(--gold); width:18px; }
+        .social-row { display:flex; gap:10px; margin-top:16px; }
+        .social-row a {
+            width:40px; height:40px; border-radius:50%;
+            background: rgba(255,255,255,0.05); display:flex;
+            align-items:center; justify-content:center;
+            color: var(--gold); border:1px solid var(--border);
+            transition: var(--transition);
+        }
+        .social-row a:hover { background: var(--gold); color: #0a1628; }
+        .contact-map iframe {
+            width:100%; height:240px; border-radius: var(--radius-lg);
+            border:1px solid rgba(255,255,255,0.1);
+        }
+        .contact-form-new h3 { color: var(--gold); font-size:1.3rem; margin-bottom:16px; }
+        .contact-form-new input,
+        .contact-form-new textarea {
+            width:100%; padding:14px 16px; margin-bottom:12px;
+            border-radius: var(--radius-sm);
+            background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+            color: #fff; font-family:inherit; font-size:0.95rem;
+            transition: var(--transition); outline:none;
+        }
+        .contact-form-new input:focus,
+        .contact-form-new textarea:focus {
+            border-color: var(--gold);
+            box-shadow:0 0 0 3px rgba(200,162,89,0.1);
+        }
+        .contact-form-new button {
+            width:100%; padding:14px; border-radius: var(--radius-sm);
+            background: var(--gold); color: #0a1628; font-weight:800;
+            border:none; cursor:pointer; font-size:1rem; transition: var(--transition);
+        }
+        .contact-form-new button:hover { background: #ffffff; }
+        .footer-bottom {
+            text-align:center; padding:30px 0 0;
+            color: rgba(255,255,255,0.35); font-size:0.85rem;
+            border-top:1px solid rgba(255,255,255,0.05); margin-top:50px;
+        }
+        .footer-bottom span { color: var(--gold); }
+        @media (max-width: 992px) {
+            .contact-grid-new { grid-template-columns:1fr; }
+        }
+
+        .toast-message {
+            position:fixed; bottom:40px; left:50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--navy); color: var(--gold);
+            padding:16px 36px; border-radius:50px;
+            border:1px solid var(--gold); z-index:9999;
+            opacity:0; visibility:hidden; transition:0.5s;
+            font-weight:700; box-shadow:0 10px 30px rgba(0,0,0,0.4);
+        }
+        .toast-message.show { opacity:1; visibility:visible; transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body>
+    <div id="toast" class="toast-message">✅ پیام شما با موفقیت ثبت شد!</div>
+
+    <nav class="right-toolbar" id="rightToolbar">
+        <div class="toolbar-item" data-target="about"><span class="toolbar-dot"></span><span class="toolbar-label">درباره ما</span></div>
+        <div class="toolbar-item" data-target="services"><span class="toolbar-dot"></span><span class="toolbar-label">خدمات</span></div>
+        <div class="toolbar-item" data-target="brands"><span class="toolbar-dot"></span><span class="toolbar-label">برندها</span></div>
+        <div class="toolbar-item" data-target="contact"><span class="toolbar-dot"></span><span class="toolbar-label">تماس</span></div>
+    </nav>
+
+    <section class="hero-section" id="home">
+        <div class="hero-bg-art">
+            <div class="orb orb1"></div>
+            <div class="orb orb2"></div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-logo-frame">
+                <div class="ring1"></div><div class="ring2"></div><div class="ring3"></div>
+                <img src="photos/logo-removebg-preview.png" alt="لیان گستر">
+            </div>
+        </div>
+        <div class="hero-text" data-aos="fade-up">
+            <div class="hero-eyebrow">نمایندگی انحصاری</div>
+            <h1>مجموعه <span class="gold-text">لیان گستر</span>؛<br>معماری اصالت</h1>
+            <p class="hero-desc">بیش از یک دهه تجربه در واردات و اجرای لوکس‌ترین تجهیزات ساختمان. کیفیت، اصالت و طراحی بی‌همتا را با ما تجربه کنید.</p>
+            <div class="hero-actions">
+                <a href="#brands" class="btn-gold"><i class="fas fa-arrow-left"></i> کشف برندها</a>
+                <a href="#contact" class="btn-ghost">تماس با ما</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual" data-aos="fade-left">
+                    <img src="photos/download (3).webp" alt="دکوراسیون لوکس" loading="lazy">
+                    <span class="accent-tag">★ بیش از ۱۳ سال تجربه</span>
+                </div>
+                <div class="about-text" data-aos="fade-right">
+                    <h2>داستان <span>لیان گسترا</span></h2>
+                    <p class="lead">از سال ۱۳۹۰، پلی میان برترین برندهای جهانی و معماران ایرانی</p>
+                    <p>لیان گسترا با مأموریت ارائه بهترین مصالح و تزئینات ساختمان آغاز به کار کرد. تیم ما با تکیه بر دانش فنی و تعهد، مدرن‌ترین محصولات را از معتبرترین برندهای جهانی گردآوری می‌کند.</p>
+                    <div class="about-stats">
+                        <div class="stat-item"><div class="stat-number">۱۳+</div><div class="stat-label">سال تجربه</div></div>
+                        <div class="stat-item"><div class="stat-number">۴</div><div class="stat-label">برند انحصاری</div></div>
+                        <div class="stat-item"><div class="stat-number">۱۰۰۰+</div><div class="stat-label">پروژه موفق</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-down">
+                <div class="section-tag">خدمات ما</div>
+                <h2 class="section-title">راهکارهای <span class="gold">یکپارچه</span> ساختمانی</h2>
+                <p class="section-sub">از مشاوره تا اجرا، همراه شما در تمام مراحل</p>
+            </div>
+            <div class="services-showcase">
+                <div class="service-card-new" data-aos="fade-up"><div class="service-icon-circle"><i class="fas fa-handshake"></i></div><h3>مشاوره تخصصی</h3><p>تحلیل نیاز و ارائه بهترین گزینه‌ها</p></div>
+                <div class="service-card-new" data-aos="fade-up" data-aos-delay="100"><div class="service-icon-circle"><i class="fas fa-headset"></i></div><h3>پشتیبانی ۲۴/۷</h3><p>پاسخگویی سریع و حرفه‌ای</p></div>
+                <div class="service-card-new" data-aos="fade-up" data-aos-delay="200"><div class="service-icon-circle"><i class="fas fa-certificate"></i></div><h3>گارانتی طلایی</h3><p>تضمین اصالت و خدمات پس از فروش</p></div>
+                <div class="service-card-new" data-aos="fade-up" data-aos-delay="300"><div class="service-icon-circle"><i class="fas fa-truck-fast"></i></div><h3>ارسال سریع</h3><p>تحویل به‌موقع در سراسر ایران</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="brands-section" id="brands">
+        <div class="container">
+            <div class="section-header" data-aos="fade-down">
+                <div class="section-tag">نمایندگی‌های ما</div>
+                <h2 class="section-title">برندهای <span class="gold">تحت نمایندگی</span></h2>
+                <p class="section-sub">برای مشاهده جزئیات هر برند، روی آن کلیک کنید</p>
+            </div>
+            <div class="brands-grid-new" id="brandsGrid">
+                <div class="brand-card-new" data-brand="brand1"><div class="brand-img-wrap"><img src="photos/kavian.png" alt="کاویان"></div><h3>کاویان</h3><span class="hint">کلیک کنید</span></div>
+                <div class="brand-card-new" data-brand="brand2"><div class="brand-img-wrap"><img src="photos/morvarid.png" alt="مروارید"></div><h3>مروارید</h3><span class="hint">کلیک کنید</span></div>
+                <div class="brand-card-new" data-brand="brand3"><div class="brand-img-wrap"><img src="photos/showan.png" alt="شوان"></div><h3>شوان</h3><span class="hint">کلیک کنید</span></div>
+                <div class="brand-card-new" data-brand="brand4"><div class="brand-img-wrap"><img src="photos/dorsa.png" alt="درسا"></div><h3>درسا</h3><span class="hint">کلیک کنید</span></div>
+            </div>
+            <div id="brandDetailPanel" class="brand-detail-panel">
+                <button class="close-btn" id="closeDetailBtn">&times;</button>
+                <div id="detailContent"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header" data-aos="fade-down"><div class="section-tag">نمونه کارها</div><h2 class="section-title">پروژه‌های <span class="gold">اجرا شده</span></h2></div>
+            <div class="gallery-masonry">
+                <div class="item tall" data-aos="zoom-in"><img src="photos/download (3).webp" alt="پروژه"><div class="overlay">پروژه مدرن</div></div>
+                <div class="item" data-aos="zoom-in" data-aos-delay="100"><img src="photos/download (4).webp" alt="پروژه"><div class="overlay">نمای لوکس</div></div>
+                <div class="item wide" data-aos="zoom-in" data-aos-delay="200"><img src="photos/download (5).webp" alt="پروژه"><div class="overlay">طراحی داخلی</div></div>
+                <div class="item" data-aos="zoom-in" data-aos-delay="300"><img src="photos/download (6).webp" alt="پروژه"><div class="overlay">سرویس مدرن</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-down"><div class="section-tag">نظرات مشتریان</div><h2 class="section-title">اعتماد <span class="gold">شما</span>، افتخار ما</h2></div>
+            <div class="testimonials-carousel">
+                <div class="testimonial-card-new" data-aos="fade-up"><div class="stars">★★★★★</div><p>"کیفیت محصولات و حرفه‌گری تیم لیان واقعاً بی‌نظیر بود. از مشاوره تا نصب، همه چیز عالی پیش رفت."</p><div class="author">— آقای رضایی، مشهد</div></div>
+                <div class="testimonial-card-new" data-aos="fade-up" data-aos-delay="100"><div class="stars">★★★★★</div><p>"نمایندگی معتبر برندهای مطرح، خیال ما را از بابت اصالت کالا راحت کرد."</p><div class="author">— خانم کریمی، تهران</div></div>
+                <div class="testimonial-card-new" data-aos="fade-up" data-aos-delay="200"><div class="stars">★★★★★</div><p>"پشتیبانی عالی و پاسخگویی سریع. از خریدم راضی‌ام و حتماً توصیه می‌کنم."</p><div class="author">— مهندس حسینی، اصفهان</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-down"><div class="section-tag">ارتباط با ما</div><h2 class="section-title">آماده <span class="gold">همکاری</span> هستیم</h2></div>
+            <div class="contact-grid-new">
+                <div class="contact-info-new" data-aos="fade-up">
+                    <h3><i class="fas fa-store"></i> لیان گسترا</h3>
+                    <p><i class="fas fa-map-pin"></i> مشهد، چهارراه کوثر، پلاک ۱۰۰۴، واحد ۵</p>
+                    <p><i class="fas fa-phone-alt"></i> ۰۹۱۲۰۲۶۹۴۷۴</p>
+                    <p><i class="fas fa-envelope"></i> info@liangostartiva.ir</p>
+                    <div class="social-row">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-map" data-aos="fade-up" data-aos-delay="100">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18..." allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="موقعیت مکانی"></iframe>
+                </div>
+                <div class="contact-form-new" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fas fa-comment-dots"></i> دریافت مشاوره</h3>
+                    <form id="contactForm">
+                        <input type="text" placeholder="نام و نام خانوادگی" required>
+                        <input type="tel" placeholder="شماره تماس" required pattern="[0-9]{11}">
+                        <textarea placeholder="پیام شما" rows="3" required></textarea>
+                        <button type="submit">ارسال درخواست</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>تمامی حقوق محفوظ است © ۱۴۰۵ | <span>لیان گسترا</span> — طراحی حرفه‌ای</p></div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 80, duration: 800 });
+
+        const sections = document.querySelectorAll('section[id]');
+        const toolbarItems = document.querySelectorAll('.toolbar-item');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id'); });
+            toolbarItems.forEach(i => i.classList.toggle('active', i.dataset.target === current));
+        });
+        toolbarItems.forEach(i => i.addEventListener('click', () => {
+            document.getElementById(i.dataset.target)?.scrollIntoView({ behavior: 'smooth' });
+        }));
+
+        const brandData = {
+            brand1: { title: 'کاویان', desc: '<ul><li>برند مادر با سابقه درخشان در شیرآلات و تجهیزات ساختمانی</li><li>کیفیت ساخت بالا، گارانتی معتبر</li></ul>' },
+            brand2: { title: 'مروارید', desc: '<ul><li>مدل شاخص کاویان با طراحی منحصربه‌فرد</li><li>تأکید بر کیفیت و گارانتی معتبر</li></ul>' },
+            brand3: { title: 'شوان', desc: '<ul><li>برندی نوپا با پشتوانه ۳۰ ساله</li><li>فناوری PVD در شیرآلات آشپزخانه</li></ul>' },
+            brand4: { title: 'درسا', desc: '<ul><li>تخصص در لوازم خانگی (هود، اجاق‌گاز، سینک)</li><li>طراحی مدرن و کیفیت قابل اعتماد</li></ul>' }
+        };
+        document.querySelectorAll('.brand-card-new').forEach(c => {
+            c.addEventListener('click', function() {
+                const b = brandData[this.dataset.brand];
+                document.getElementById('detailContent').innerHTML = `<h3>${b.title}</h3>${b.desc}`;
+                document.getElementById('brandDetailPanel').classList.add('active');
+                document.querySelectorAll('.brand-card-new').forEach(ca => ca.classList.remove('active-brand'));
+                this.classList.add('active-brand');
+                document.getElementById('brandDetailPanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+        document.getElementById('closeDetailBtn').addEventListener('click', () => {
+            document.getElementById('brandDetailPanel').classList.remove('active');
+            document.querySelectorAll('.brand-card-new').forEach(ca => ca.classList.remove('active-brand'));
+        });
+
+        const form = document.getElementById('contactForm');
+        const toast = document.getElementById('toast');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+            form.reset();
+        });
+    </script>
+</body>
+</html>
